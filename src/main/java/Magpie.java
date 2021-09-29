@@ -1,5 +1,3 @@
-import java.util.Locale;
-
 /**
  * A program to carry on conversations with a human user.
  * This is the initial version that:  
@@ -59,6 +57,9 @@ public class Magpie
         }
         else if (findWord(statement,"Netflix") >= 0) {
             response = "What is your favorite show?";
+        }
+        else if (findWord(statement, "I want") >= 0){
+            transformIWantStatement(statement);
         }
         else if (statement.trim().length() == 0){
             response = "Say something silly";
@@ -149,9 +150,26 @@ public class Magpie
      */
     public String transformIWantStatement(String statement)
     {
-        //your code here
-        return "";
-    }
+//        if (statement.indexOf("I want ") >= 0){
+//
+//            int index_word_after = findWord(statement, "I want");
+//
+//            index_word_after = index_word_after + 6; // plus 6 because from "I" in "I want" to the next space is 6 chars
+//
+//            String word_after = "";
+//
+//            while (statement.charAt(index_word_after) != ' ' || statement.indexOf(index_word_after) == statement.length() - 1){
+//                word_after = word_after + statement.charAt(index_word_after);
+//                index_word_after ++;
+
+
+        // if (findWord(statement, "I want") >= 0){
+        System.out.println("Would you really be happy if you had" + statement.substring(6) + "?");
+        return "Would you really be happy if you had" + statement.substring(6) + "?"; //6 because from "I" in "I want" to the next space is 6 chars
+        }
+
+
+
 
     /**
      * Take a statement with "I <something> you" and transform it into 
