@@ -61,6 +61,15 @@ public class Magpie
         else if (findWord(statement, "I want") >= 0){
             transformIWantStatement(statement);
         }
+        else if (findWord(statement, "I") >= 0 && findWord(statement, "you") >= 0){
+            transformIYouStatement(statement);
+        }
+        else if (findWord(statement, "you") >= 0 && findWord(statement, "me") >= 0){
+            transformYouMeStatement(statement);
+        }
+        else if (findWord(statement, "I want to") >= 0) {
+            transformIWantToStatement(statement);
+        }
         else if (statement.trim().length() == 0){
             response = "Say something silly";
         }
@@ -179,7 +188,15 @@ public class Magpie
      */
     public String transformIYouStatement(String statement)
     {
-        //your code here
+        statement = statement.toLowerCase();
+
+        if(findWord(statement, "I") >= 0 && findWord(statement, "you") >= 0){
+            int index1 = statement.indexOf("I");
+            index1 = index1 + 2;
+            String something = statement.substring(index1, findWord(statement, "you"));
+            return "Why do you" + something + "me?";
+        }
+
         return "";
     }
 
@@ -191,7 +208,15 @@ public class Magpie
      */
     public String transformIWantToStatement(String statement)
     {
-        // your code here
+        statement = statement.toLowerCase();
+
+        if (findWord(statement, "I want to") >= 0){
+            int indexstart = statement.indexOf("I want to");
+            indexstart = indexstart + 10;
+            String something = statement.substring(indexstart);
+            return "What would it mean to" + something + "?";
+        }
+
         return "";
     }
 
@@ -206,7 +231,13 @@ public class Magpie
      */
     public String transformYouMeStatement(String statement)
     {
-        // your code here
+        if (findWord(statement, "you") >= 0 && findWord(statement, "me") >= 0) {
+            int index_y = statement.indexOf("you");
+            index_y = index_y + 4;
+            String something = statement.substring(index_y, findWord(statement, "me"));
+            return "What makes you think that I " + something + "you?";
+
+        }
         return "";
     }
 }
