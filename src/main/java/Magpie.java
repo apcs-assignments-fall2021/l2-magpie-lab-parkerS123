@@ -96,7 +96,7 @@ public class Magpie
      */
     public String getRandomResponse()
     {
-        final int NUMBER_OF_RESPONSES = 6;
+        final int NUMBER_OF_RESPONSES = 7;
         double r = Math.random();
         int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
         String response = "";
@@ -123,6 +123,8 @@ public class Magpie
         else if (whichResponse == 5){
             response = "How interesting is that, wow";
         }
+        else if (whichResponse == 6){
+            response = "Not to change the subject, but Nathan Lin is best friends with Will Harris";
     
         return response;
     }
