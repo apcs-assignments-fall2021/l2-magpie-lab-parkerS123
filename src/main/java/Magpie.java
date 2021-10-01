@@ -58,6 +58,12 @@ public class Magpie
         else if (findWord(statement,"Netflix") >= 0) {
             response = "What is your favorite show?";
         }
+        else if (findWord(statement, "Pippen") >= 0){
+            response = "Pippen is my dog! I love my baby";
+        }
+        else if (findWord(statement, "Packers") >= 0) {
+            response = "The Green Bay Packers are the best team in football";
+        }
         else if (findWord(statement, "I want") >= 0){
             transformIWantStatement(statement);
         }
@@ -69,6 +75,9 @@ public class Magpie
         }
         else if (findWord(statement, "I want to") >= 0) {
             transformIWantToStatement(statement);
+        }
+        else if (findWord(statement, "I like") >= 0){
+            transformILikeStatement(statement);
         }
         else if (statement.trim().length() == 0){
             response = "Say something silly";
@@ -194,6 +203,7 @@ public class Magpie
             int index1 = statement.indexOf("I");
             index1 = index1 + 2;
             String something = statement.substring(index1, findWord(statement, "you"));
+            System.out.print("Why do you" + something + "me?");
             return "Why do you" + something + "me?";
         }
 
@@ -214,6 +224,7 @@ public class Magpie
             int indexstart = statement.indexOf("I want to");
             indexstart = indexstart + 10;
             String something = statement.substring(indexstart);
+            System.out.print("What would it mean to" + something + "?");
             return "What would it mean to" + something + "?";
         }
 
@@ -235,9 +246,23 @@ public class Magpie
             int index_y = statement.indexOf("you");
             index_y = index_y + 4;
             String something = statement.substring(index_y, findWord(statement, "me"));
+            System.out.print("What makes you think that I " + something + "you?");
             return "What makes you think that I " + something + "you?";
 
         }
+        return "";
+    }
+
+    public String transformILikeStatement(String statement){
+
+        if(findWord(statement,"I like") >= 0){
+            int index_I_= statement.indexOf("I like");
+            index_I_ = index_I_ + 7;
+            String something = statement.substring(index_I_);
+            System.out.print("What does is mean to like " + something + "?");
+            return "What does is mean to like " + something + "?";
+        }
+
         return "";
     }
 }
