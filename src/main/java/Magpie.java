@@ -123,9 +123,9 @@ public class Magpie
         else if (whichResponse == 5){
             response = "How interesting is that, wow";
         }
-        else if (whichResponse == 6){
+        else if (whichResponse == 6) {
             response = "Not to change the subject, but Nathan Lin is best friends with Will Harris";
-    
+        }
         return response;
     }
 
